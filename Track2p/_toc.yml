@@ -2,9 +2,8 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: home
 chapters:
-- file: README
 - file: installation
 - file: gui
 - file: demo_t2p_outputs

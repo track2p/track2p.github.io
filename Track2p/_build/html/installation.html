@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>GUI usage &#8212; Track2p</title>
+    <title>Installation &#8212; Track2p</title>
   
   
   
@@ -58,12 +58,12 @@
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'gui';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'installation';</script>
     <link rel="shortcut icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Analysing output of t2p" href="demo_t2p_outputs.html" />
-    <link rel="prev" title="Installation" href="installation.html" />
+    <link rel="next" title="GUI usage" href="gui.html" />
+    <link rel="prev" title="Home of Track2p" href="home.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -144,7 +144,7 @@
     
   
 
-<a class="navbar-brand logo" href="intro.html">
+<a class="navbar-brand logo" href="home.html">
   
   
   
@@ -176,19 +176,14 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Welcome to Track2p’s documentation!
+                <a class="reference internal" href="home.html">
+                    Home of Track2p
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="README.html">track2p</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">GUI usage</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">GUI usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demo_t2p_outputs.html">Analysing output of t2p</a></li>
 </ul>
 
@@ -261,7 +256,7 @@
       
       
       
-      <li><a href="https://github.com/juremaj/Track2p/issues/new?title=Issue%20on%20page%20%2Fgui.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/juremaj/Track2p/issues/new?title=Issue%20on%20page%20%2Finstallation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +286,7 @@
       
       
       
-      <li><a href="_sources/gui.md" target="_blank"
+      <li><a href="_sources/installation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,7 +370,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>GUI usage</h1>
+    <h1>Installation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,10 +380,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolbar">Toolbar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-window">Central window</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bottom-bar">Bottom bar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-plot">Raster plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issues-with-itk-elastix-installation">Issues with ITK elastix installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#platform-specific-installation-issues-requirements">Platform specific installation issues/requirements:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-via-github-discouraged">Installation via GitHub (discouraged)</a></li>
 </ul>
             </nav>
         </div>
@@ -400,55 +394,56 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="gui-usage">
-<h1>GUI usage<a class="headerlink" href="#gui-usage" title="Permalink to this heading">#</a></h1>
-<section id="toolbar">
-<h2>Toolbar<a class="headerlink" href="#toolbar" title="Permalink to this heading">#</a></h2>
-<p>The user has three buttons on the toolbar:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Run</span></code> : launches the algorithm.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">File</span></code> : imports data already processed by the algorithm.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Visualization</span></code> : allows results to be visualized using raster plots, providing a graphical representation of neuronal activity of the whole matched population over time (for more details, see section ‘Raster plot’ below).</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h1>
+<section id="issues-with-itk-elastix-installation">
+<h2>Issues with ITK elastix installation<a class="headerlink" href="#issues-with-itk-elastix-installation" title="Permalink to this heading">#</a></h2>
+<p>In some cases updating anaconda helped (the procedure in the readme was written based on version 23.11.0).</p>
+<p>Otherwise manually building the environment could be an option.</p>
+<p>We make the environment as usual:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">track2p</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.9</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">track2p</span>
+</pre></div>
+</div>
+<p>In the next step we need to specify that we will not install dependencies automatically from pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">track2p</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">deps</span>
+</pre></div>
+</div>
+<p>Then we manually install the dependencies (see <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> in root of <code class="docutils literal notranslate"><span class="pre">track2p</span></code>). For version <code class="docutils literal notranslate"><span class="pre">track2p=0.5.0</span></code> we can manually install the dependecies using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span><span class="o">==</span><span class="mf">1.23.5</span> <span class="o">&amp;&amp;</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span><span class="o">==</span><span class="mf">3.5.3</span> <span class="o">&amp;&amp;</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">image</span><span class="o">==</span><span class="mf">0.20.0</span> <span class="o">&amp;&amp;</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">itk</span><span class="o">-</span><span class="n">elastix</span><span class="o">==</span><span class="mf">0.19.1</span> <span class="o">&amp;&amp;</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">PyQt5</span><span class="o">==</span><span class="mf">5.15.10</span> <span class="o">&amp;&amp;</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">qtpy</span><span class="o">==</span><span class="mf">2.4.1</span> <span class="o">&amp;&amp;</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">tqdm</span><span class="o">==</span><span class="mf">4.66.2</span> <span class="o">&amp;&amp;</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">==</span><span class="mf">1.4.0</span> <span class="o">&amp;&amp;</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">openTSNE</span><span class="o">==</span><span class="mf">1.0.1</span>
+</pre></div>
+</div>
+<p>Note: usually saving ITK errors can be solved by changing the itk-elastix version, for example from <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">itk-elastix==0.19.1</span></code> to <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">itk-elastix==0.19.0</span></code> or vice versa.</p>
+<p>If this is successful you can just run the algorithm as usual:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">track2p</span>
+</pre></div>
+</div>
 </section>
-<section id="central-window">
-<h2>Central window<a class="headerlink" href="#central-window" title="Permalink to this heading">#</a></h2>
-<p>The central area of the interface presents various visualizations.</p>
-<p>In the top left part, users can find a mean image displayed for each recording, labeled with the corresponding day number (e.g., day1, day2, etc.). Each image is also overlayed with the ROIs of the cells that are matched across all days, with the color of a particular match staying the same across days. Users can navigate through these images across days by clicking on the tabs representing each day. Additionally, users have the option to zoom into specific regions of the image and click on individual cell to highlight it.</p>
-<p>Once a cell is selected, a cropped, zoomed-in view of a small surrounding part of the field of view is visualised for each day and displayed in the top right-hand corner with the ROI of the selected cell highlighted (a window of 40x40 pixels around the ROI centroid is used currently).</p>
-<p>At the bottom  of the GUI, users can view the fluorescence trace of the selected cell for each recording. The tracks are organized chronologically, with the track at the top corresponding to the first day of recording, followed by the following days. To further analyze these traces, users can zoom in by drawing a rectangle from the bottom left corner to the top right corner of the trace. After drawing the rectangle, they can zoom in by pressing ‘enter’ and zoom out by pressing ‘r’.</p>
-<p>Here, the user has zommed on a specific cell as well as on the fluorescence of the two first days (recording of developing mouse barrel cortex for consecutive 7 days)</p>
-<p><img alt="ex_all_vizualizations_zoomed.png" src="_images/ex_all_vizualizations_zoomed.png" /></p>
+<section id="platform-specific-installation-issues-requirements">
+<h2>Platform specific installation issues/requirements:<a class="headerlink" href="#platform-specific-installation-issues-requirements" title="Permalink to this heading">#</a></h2>
+<p><strong>MacOS</strong>: You might need to have xcode enabled during installation. If you run into <code class="docutils literal notranslate"><span class="pre">xcrun:</span> <span class="pre">error:</span> <span class="pre">invalid</span> <span class="pre">active</span> <span class="pre">developer</span> <span class="pre">path</span> <span class="pre">.../.../...</span> <span class="pre">,</span> <span class="pre">missing</span> <span class="pre">xcrun</span> <span class="pre">at</span> <span class="pre">.../.../...</span> </code> then enable xcode by running: <code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code></p>
+<p><strong>Linux Ubuntu</strong>: Everything works well.</p>
+<p><strong>Windows</strong>: (not tested yet)</p>
 </section>
-<section id="bottom-bar">
-<h2>Bottom bar<a class="headerlink" href="#bottom-bar" title="Permalink to this heading">#</a></h2>
-<p>The bottom bar is divided into several parts:</p>
-<ul class="simple">
-<li><p>A text box with an up-down control: the user can browse all matches detected by the algorithm as present across all days, and all central window information will be updated according to the cell selected.</p></li>
-</ul>
-<p>The interface allows the user to curate the results of the algorithm’s multi-day cell tracking. On initialization, all cells detected as being correctly tracked each day by our algorithm have a status of 1. This information is stored in <code class="docutils literal notranslate"><span class="pre">track_ops.vector_curation</span></code> (see <a class="reference external" href="https://github.com/juremaj/track2p/blob/main/docs/parameters.md">parameters</a>)</p>
-<p>However, the user can assess the quality of cell tracking and activity by inspecting ROIs, zoomed images and the fluorescence traces across days. Subsequently, adjustments can be made to the status of a cell within track_ops.vector_curation through the interface.</p>
-<ul class="simple">
-<li><p>State of ROI : informs the user of the current cell status stored in track_ops.npy</p></li>
-<li><p>✅ : is used to set the cell state to 1 in track_ops.vector_curation</p></li>
-<li><p>❌ : is used to set the cell state to 0 in track_ops.vector_curation</p></li>
-<li><p>Apply curation : is used to apply the curation to the GUI. When the user clicks on this button, all cells with a status of 0 will be <strong>white</strong>, while those with a status of 1 will be <strong>colored</strong>. <strong>Note</strong>: This button only affects the GUI visualisation. It is not necessary to click this button to save the curation to <code class="docutils literal notranslate"><span class="pre">track_ops.vector_curation</span></code>, this is done automatically when the status of the cell is changed by the user.</p></li>
-</ul>
-<p>Below is an example of a cell labelled as ‘not cell’ by the user (recording of developing mouse barrel cortex for consecutive 7 days)</p>
-<p><img alt="ex_curation.png" src="_images/ex_curation.png" /></p>
-</section>
-<section id="raster-plot">
-<h2>Raster plot<a class="headerlink" href="#raster-plot" title="Permalink to this heading">#</a></h2>
-<p>To generate raster plots, the user should launch the GUI through <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">track2p</span></code> and navigate to the ‘Visualization’ tab on the top of the window and select ‘Generate raster plot’ from the dropdown menu. This will open a pop-up window that will allow the user to set the path to track2p output folder and to set several parameters.</p>
-<p>IMAGE</p>
-<p>The user can use <code class="docutils literal notranslate"><span class="pre">PCA</span></code>(Principal Component Analysis) and <code class="docutils literal notranslate"><span class="pre">t-SNE</span></code> (t-distributed Stochastic Neighbor Embedding) techniques to re-sort the rasters based on dimensionality reduction. This allows for more intuitive visualisations that can reveal structure within the neuronal activity traces. Additionally, this sorting can be applied for a specific day and applied to all other days. This makes it possible to analyze variations in cell activity from day to day by perserving the sorting of the matched cells.</p>
-<p>The user can also enter advanced settings:</p>
-<ul class="simple">
-<li><p>Averaging bin size : to smooth the plot raster data over a defined time interval. (Note: currently, the total number of frames of the recurding should be divisible with the entered number)</p></li>
-<li><p>vmin and vmax parameters allow to adjust the contrast</p></li>
-</ul>
-<p>Below is an example of a raster plot generated using tsne for sorting, the sorting was computed on last day and each 10 time frames were averaged to smooth the data (recording of developing mouse barrel cortex for consecutive 7 days).</p>
-<p><img alt="ex_raster.png" src="_images/ex_raster.png" /></p>
+<section id="installation-via-github-discouraged">
+<h2>Installation via GitHub (discouraged)<a class="headerlink" href="#installation-via-github-discouraged" title="Permalink to this heading">#</a></h2>
+<p>Alternatively track2p can also be installed directly from the Github repository (this is currently discouraged, since the repo is under active development).
+To install via Github run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">track2p</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.9</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">track2p</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">juremaj</span><span class="o">/</span><span class="n">track2p</span>
+<span class="n">cd</span> <span class="n">track2p</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -483,20 +478,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="installation.html"
+       href="home.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Installation</p>
+        <p class="prev-next-title">Home of Track2p</p>
       </div>
     </a>
     <a class="right-next"
-       href="demo_t2p_outputs.html"
+       href="gui.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Analysing output of t2p</p>
+        <p class="prev-next-title">GUI usage</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -516,10 +511,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolbar">Toolbar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-window">Central window</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bottom-bar">Bottom bar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-plot">Raster plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issues-with-itk-elastix-installation">Issues with ITK elastix installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#platform-specific-installation-issues-requirements">Platform specific installation issues/requirements:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-via-github-discouraged">Installation via GitHub (discouraged)</a></li>
 </ul>
   </nav></div>
 
