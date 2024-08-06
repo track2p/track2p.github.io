@@ -1,11 +1,10 @@
-# Welcome to your Jupyter Book
+# Welcome to Track2p's documentation!
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Track2p is a general algorithm for cell tracking in longitudinal calcium imaging recordings.
 
-Check out the content pages bundled with this sample book to see more.
+Here you will find all the necessary information for installation and use of the algorithm and the associated GUI.
+
+Check out the following contents to get started:
 
 ```{tableofcontents}
 ```
