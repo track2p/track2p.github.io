@@ -5,5 +5,13 @@ format: jb-book
 root: home
 chapters:
 - file: installation
+- file: inputs_and_parameters
+- file: run_track2p
 - file: gui
-- file: demo_t2p_outputs
+- file: outputs
+  sections:
+  - file: visualisations
+  - file: matches
+  - file: suite2p_outputs
+  - file: curation_outputs
+  - file: demo_t2p_outputs
