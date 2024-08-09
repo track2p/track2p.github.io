@@ -95,7 +95,7 @@ In addition, a zoomed-in image of the cell for each day is shown in the top righ
 
 Finally, the user can browse all the putative matches detected by the algorithm using the bar at the bottom to toggle through matches, or alternatively they can enter the index of a specific number to display it within the GUI. This bar is also used for manual curation, where we allow the user to evaluate the quality of the tracking for each individual match.
 
-For more details on how to use the GUI see [GUI usage](https://github.com/juremaj/track2p/blob/main/docs/gui.md)
+For more details on how to use the GUI see [Using the GUI](https://github.com/juremaj/track2p/blob/main/docs/gui.md)
 
 
 # Outputs

@@ -4,14 +4,28 @@
 format: jb-book
 root: home
 chapters:
-- file: installation
-- file: inputs_and_parameters
-- file: run_track2p
-- file: gui
+- file: install
+  sections:
+  - file: install_via_pip
+  - file: install_via_github
+  - file: install_reinstall
+  - file: install_common_issues
+- file: run
+  sections:
+  - file: run_inputs_and_parameters
+  - file: run_track2p_gui
+  - file: run_track2p_notebook
 - file: outputs
   sections:
-  - file: visualisations
-  - file: matches
-  - file: suite2p_outputs
-  - file: curation_outputs
-  - file: demo_t2p_outputs
+  - file: outputs_visualisations
+  - file: outputs_matches
+  - file: outputs_curation_outputs
+  - file: outputs_demo_t2p_outputs
+  - file: outputs_suite2p
+- file: gui
+  sections:
+  - file: gui_overview
+  - file: gui_run_track2p
+  - file: gui_interactive_vis
+  - file: gui_curation
+  - file: gui_raster
