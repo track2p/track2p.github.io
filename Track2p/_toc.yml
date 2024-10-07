@@ -15,7 +15,7 @@ chapters:
   - file: run_inputs_and_parameters
   - file: run_track2p_gui
   - file: run_track2p_notebook
-- file : Algorithm overview
+- file : Algorithm
   sections:
   - file: run_algorithm_overview
 - file: outputs
