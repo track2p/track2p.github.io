@@ -1,6 +1,8 @@
 # Track2p
 
-Track2p documentation
+Track2p documentation.
+
+For the repo of the algorithm and gui visit: https://github.com/juremaj/track2p
 
 
 
