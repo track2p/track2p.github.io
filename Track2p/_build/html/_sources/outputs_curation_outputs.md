@@ -1,3 +1,0 @@
-# Curation
-
---- Work in progress ---
