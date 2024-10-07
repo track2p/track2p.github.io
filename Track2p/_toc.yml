@@ -12,7 +12,7 @@ chapters:
   - file: install_common_issues
 - file : algorithm
   sections:
-  - file: run_algorithm_overview
+  - file: algorithm_overview
 - file: run
   sections:
   - file: run_inputs_and_parameters
