@@ -1,1 +1,1 @@
-# Installation overview
+# Algorithm overview
