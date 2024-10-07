@@ -1,6 +1,6 @@
 # Algorithm overview
 
-![algo_overwiew.png](Track2p/media/plots/algo_overwiew.png)
+![algo_overwiew.png](media/plots/algo_overwiew.png)
 
 In order to track cells across days while taking into account the specific constraints of development, we devised a simple tracking approach based on spatial similarity of detected cells across consecutive recordings. As in other tracking algorithms for calcium imaging data, the final goal is to find a linking between cells across days allowing the user to compare their functional properties. 
 
