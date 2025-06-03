@@ -30,6 +30,7 @@ Important things with this:
 	1) you can access this by opening locally `track2p.github.io/Track2p/_build/html/index.html`
 3) to publish new version:
 	1) move `_build` to root of `track2p.github.io` (this could be changed maybe, check here: https://jupyterbook.org/en/stable/publish/gh-pages.html)
+	2) add `<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>` to home.html, just before `</body` for analytics 
 	2) and then add, commit, push
 	3) wait for action to finish correctly (first orange circle, once finished becomes green tick)
 	4) check that changes are online

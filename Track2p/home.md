@@ -12,6 +12,8 @@ For installation and use of the algorithm and the GUI follow the instructions be
 
 You can also access the Track2p Github repository [here](https://github.com/juremaj/track2p)
 
+And the Track2p preprint [here](https://www.biorxiv.org/content/10.1101/2025.02.26.640367v1)
+
 
 # Installation
 
@@ -27,7 +29,6 @@ conda activate track2p
 Then simply install the track2p package using pip:
 
 ```
-pip install itk-elastix==0.19.1 --no-deps
 pip install track2p
 ```
 
@@ -110,13 +111,11 @@ For more information see documentation relating to track2p [viusalisations](http
 
 # Reference
 
-For now if you use the algorithm please reference the Cosyne abstract:
+For now if you use the algorithm please reference the [preprint](https://www.biorxiv.org/content/10.1101/2025.02.26.640367v1):
 
-  **Majnik, J., Zangila, S., Cossart, R. & Platel, J. C. (2024). _Emergence of state modulation in a developing cortical circuit_. COSYNE Abstract.**
+  **Majnik, J., Mantez, M., Zangila, S., Bugeon S., Guignard L., Platel, J. C. & Cossart, R. (2025). _Longitudinal tracking of neuronal activity from the same cells in the developing brain using Track2p_. bioRxiv.**
 
-  
-
-You can also see the YouTube recording of the talk for a reference use-case in neocortical development: [Link to video (starting at 47:20)](https://youtu.be/Tr97HwgQ9ik?t=2839)
+You can also see a Youtube recording of a talk related to the preprint: [Link to video (starting at 47:20)](https://youtu.be/Tr97HwgQ9ik?t=2839)
 
 
 Full contents of the documentation:
