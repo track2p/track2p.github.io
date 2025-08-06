@@ -26,6 +26,6 @@ python -m track2p
 
 This opens a GUI allowing the user to launch the algorithm and visualise the results interactively.
 
-(For instructions on running track2p without the GUI see the 'Run via script' under the 'Usage' section)
+For instructions on running track2p without the GUI see [Run track2p > Run track2p programatically](https://track2p.github.io/run_track2p_notebook.html)
 
 Note: For common installation issues see ['Installation > Common issues'](https://track2p.github.io/install_common_issues.html) in documentation.

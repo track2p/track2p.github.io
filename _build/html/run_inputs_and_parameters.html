@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -409,7 +409,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-run-track2p-py">Setting up <code class="docutils literal notranslate"><span class="pre">run_track2p.py</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-data-organization">Input data organization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suite2p-format">Suite2p format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-npy-arrays">Raw .npy arrays</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supplementary-track-ops-parameters-gui">Supplementary <code class="docutils literal notranslate"><span class="pre">track.ops</span></code> parameters (GUI)</a></li>
 </ul>
             </nav>
@@ -424,25 +429,54 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="inputs-and-parameters">
 <h1>Inputs and parameters<a class="headerlink" href="#inputs-and-parameters" title="Link to this heading">#</a></h1>
-<p>— UNDER CONSTRUCTION —</p>
-<section id="setting-up-run-track2p-py">
-<h2>Setting up <code class="docutils literal notranslate"><span class="pre">run_track2p.py</span></code><a class="headerlink" href="#setting-up-run-track2p-py" title="Link to this heading">#</a></h2>
+<section id="input-data-organization">
+<h2>Input data organization<a class="headerlink" href="#input-data-organization" title="Link to this heading">#</a></h2>
+<p>_ <em>Warning: to avoid issues with loading data, avoid modifying the paths where the datasets are stored after running track2p. This is because the interface uses the paths to the suite2p datasets saved in <code class="docutils literal notranslate"><span class="pre">track_ops.npy</span></code> (<code class="docutils literal notranslate"><span class="pre">track_ops.all_ds_path</span></code>)</em> _</p>
+<p>There are two input formats accepted by Track2p - the proprietary Suite2p format as well as a more flexible format storing data in raw .npy arrays. The differences between the two are discussed below and the format is specified by the user by setting the <code class="docutils literal notranslate"><span class="pre">track_ops.input_format</span></code> setting to either <code class="docutils literal notranslate"><span class="pre">suite2p</span></code> or <code class="docutils literal notranslate"><span class="pre">npy</span></code></p>
+<section id="suite2p-format">
+<h3>Suite2p format<a class="headerlink" href="#suite2p-format" title="Link to this heading">#</a></h3>
+<p>In this case we assume each of the recordings that are to be matched contains processed data in the default ‘suite2p format’. In that case each recording folder has a subfolder named ‘suite2p’, which in terms contains one sub-folder per plane. Each of these ‘plane’ subfolders contains the usual suite2p outputs for the neurons recorded within that plane (see: <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/outputs.html">https://suite2p.readthedocs.io/en/latest/outputs.html</a>). In the case of running suite2p individually for simultaneously recorded planes, the user can reconstruct this convention by putting the results of the second suite2p run to a manually added ‘plane1’ subfolder etc.</p>
+<p>Below is an example of file organisation for a mouse imaged over 7 days (single plane).</p>
+<p><img alt="ex_suite2p_dt.png" src="_images/ex_suite2p_dt.png" /></p>
+</section>
+<section id="raw-npy-arrays">
+<h3>Raw .npy arrays<a class="headerlink" href="#raw-npy-arrays" title="Link to this heading">#</a></h3>
+<p>In this case we assume that each recording folder has a subfolder named ‘data_npy’, which in terms contains one sub-folder per plane. Each of these ‘plane’ subfolders contains three numpy arrays:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.all_ds_path</span></code>: list of paths to datasets containing a <code class="docutils literal notranslate"><span class="pre">suite2p</span></code> folder</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.save_path</span></code>: where the outputs will be saved (a <code class="docutils literal notranslate"><span class="pre">track2p</span></code> folder will be generated here)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.reg_chan</span></code> : channel to use for registration (0=functional, 1=anatomical)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F.npy</span></code>: float array of shape: (n_roi x n_timepoints) - containing fluorescence derived traces (e. g. raw F, dF/F, deconvolved F…)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fov.npy</span></code>: float array of shape: (npix_y x npix_x) - containing the image used for registration across days</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rois.npy</span></code>: bool array of shape (n_roi x npix_y x npix_x) - containing binary masks for all detected ROIs (NOTE: ROIs should be aligned with the fov image for tracking to work successfully)</p></li>
+</ul>
+<p>Below is an example of file organisation for a mouse imaged over 7 days (single plane).</p>
+<p><img alt="ex_suite2p_dt.png" src="_images/ex_npy_dt.png" /></p>
+</section>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
+<p>Access to all parameters is currently only available when running track2p programmatically, but we allow users to change the crucial parameters in the GUI. In either case the default parameters should work well in most cases. The parameters available through the gui are marked with an asterisk (*).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.all_ds_path</span></code>* : list of paths to datasets containing a <code class="docutils literal notranslate"><span class="pre">suite2p</span></code> or <code class="docutils literal notranslate"><span class="pre">data_npy</span></code> folder</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.input_format</span></code>* : either <code class="docutils literal notranslate"><span class="pre">suite2p</span></code> or <code class="docutils literal notranslate"><span class="pre">npy</span></code> depending on the format of the input data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.save_path</span></code>* : where the outputs will be saved (a <code class="docutils literal notranslate"><span class="pre">track2p</span></code> folder will be generated here)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.reg_chan</span></code>* : channel to use for registration (0=functional, 1=anatomical)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.transform_type</span></code>* : either <code class="docutils literal notranslate"><span class="pre">affine</span></code> or <code class="docutils literal notranslate"><span class="pre">rigid</span></code> depending on the transform used (<code class="docutils literal notranslate"><span class="pre">rigid</span></code> might be ok for adult data)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.iscell_thr</span></code>* : either <code class="docutils literal notranslate"><span class="pre">None</span></code> if using manual curation from suite2p or a value between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> to choose based on calssifier probability</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.thr_method</span></code>* : automatic thresholding method for filtering matches, can be either <code class="docutils literal notranslate"><span class="pre">otsu</span></code> (Otsu’s method) or <code class="docutils literal notranslate"><span class="pre">min</span></code> (Local minimum of estimated probability density function)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.save_in_s2p_format</span></code>* : save the outputs in suite2p format where the rows are matched (for example F[0,:] from one day corresponds to the same cell as F[0,:] on another day)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.matching_method</span></code> : determines what is used to calculate pairwise cost of each possible pair of ROIs across two different recordings. Can be set to <code class="docutils literal notranslate"><span class="pre">iou</span></code> (intersection over union) or <code class="docutils literal notranslate"><span class="pre">cent</span></code> (euclidean distance of centroids) - <code class="docutils literal notranslate"><span class="pre">iou</span></code> probably works much better in most cases, especially with dense labelling.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.iou_dist_thr</span></code> : distance between centroids (in pixels) above which to skip iou computation (to save time) (this is only relevant if <code class="docutils literal notranslate"><span class="pre">self.matching_method=='iou'</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.win_size</span></code> : window size for visualising matched ROIs across days (crop of mean image). This will only affect visualisation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.sat_perc</span></code> : percentile to saturate FOV image at. This will only affect visualisation.</p></li>
 </ul>
 </section>
 <section id="supplementary-track-ops-parameters-gui">
 <h2>Supplementary <code class="docutils literal notranslate"><span class="pre">track.ops</span></code> parameters (GUI)<a class="headerlink" href="#supplementary-track-ops-parameters-gui" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.colors</span></code>: It’s a color vector assigning a specific color to each cell. When the user opens a track2Pp dataset, each cell retains the same color at each opening.
+<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.colors</span></code>: It’s a color vector assigning a specific color to each cell. When the user opens a track2p dataset, each cell retains the same color at each opening.
 A vector is created per plane <code class="docutils literal notranslate"><span class="pre">colors_plane_x</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">track_ops.save_in_s2p_format</span></code> :  allows to generate the suite2p files containing only the cells present on every day</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">track_ops.vector_curation</span></code> : It is a vector of the length of the number of cells found every day by our algorithm. It represents the state of each cell, varying between 0 and 1, where 0 means that it is considered “not cell” by the user, and 1 means that it is recognized as a “cell”. It is appallingly updated by the user’s choice.
 A vector is created per plane <code class="docutils literal notranslate"><span class="pre">vector_curation_plane_x</span></code></p></li>
 </ul>
-<p>(for basic documentation see comments in <code class="docutils literal notranslate"><span class="pre">track2p/ops/default.py</span></code>, more documentation will be added soon).</p>
 </section>
 </section>
 
@@ -510,7 +544,12 @@ A vector is created per plane <code class="docutils literal notranslate"><span c
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-run-track2p-py">Setting up <code class="docutils literal notranslate"><span class="pre">run_track2p.py</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-data-organization">Input data organization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suite2p-format">Suite2p format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-npy-arrays">Raw .npy arrays</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supplementary-track-ops-parameters-gui">Supplementary <code class="docutils literal notranslate"><span class="pre">track.ops</span></code> parameters (GUI)</a></li>
 </ul>
   </nav></div>

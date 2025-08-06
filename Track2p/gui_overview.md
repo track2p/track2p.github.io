@@ -1,8 +1,6 @@
 # GUI overview
 
----under construction---
-
----add image with each section highlighted---
+![ex_all_vizualizations.png](media/plots/ex_all_vizualizations.png)
 
 ## Toolbar
 
@@ -19,3 +17,7 @@ The central window is dedicated to visualising identified matches (individual ce
 ## Bottom bar
 
 The bottom bar is used to manually curate the outputs of track2p. For more information see: ['Using the GUI' > 'Curation of track2p outputs'](https://track2p.github.io/gui_curation.html)
+
+## More info
+
+For a more detailed overview of the GUI see the paper (`Supplementary Information: Software > Interactive visualisation and curation using the Track2p GUI`).

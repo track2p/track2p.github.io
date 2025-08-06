@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -418,11 +418,11 @@ document.write(`
 <li><p>A text box with an up-down control: the user can browse all matches detected by the algorithm as present across all days, and all central window information will be updated according to the cell selected.</p></li>
 </ul>
 <p>The interface allows the user to curate the results of the algorithm’s multi-day cell tracking. On initialization, all cells detected as being correctly tracked each day by our algorithm have a status of 1. This information is stored in <code class="docutils literal notranslate"><span class="pre">track_ops.vector_curation</span></code> (see <a class="reference external" href="https://github.com/juremaj/track2p/blob/main/docs/parameters.md">parameters</a>)</p>
-<p>However, the user can assess the quality of cell tracking and activity by inspecting ROIs, zoomed images and the fluorescence traces across days. Subsequently, adjustments can be made to the status of a cell within track_ops.vector_curation through the interface.</p>
+<p>However, the user can assess the quality of cell tracking and activity by inspecting ROIs, zoomed images and the fluorescence traces across days. Subsequently, adjustments can be made to the status of a cell within <code class="docutils literal notranslate"><span class="pre">track_ops.vector_curation</span></code> through the interface.</p>
 <ul class="simple">
-<li><p>State of ROI : informs the user of the current cell status stored in track_ops.npy</p></li>
-<li><p>✅ : is used to set the cell state to 1 in track_ops.vector_curation</p></li>
-<li><p>❌ : is used to set the cell state to 0 in track_ops.vector_curation</p></li>
+<li><p>State of ROI : informs the user of the current cell status stored in <code class="docutils literal notranslate"><span class="pre">track_ops.npy</span></code></p></li>
+<li><p>✅ : is used to set the cell state to 1 in <code class="docutils literal notranslate"><span class="pre">track_ops.vector_curation</span></code></p></li>
+<li><p>❌ : is used to set the cell state to 0 in <code class="docutils literal notranslate"><span class="pre">track_ops.vector_curation</span></code></p></li>
 <li><p>Apply curation : is used to apply the curation to the GUI. When the user clicks on this button, all cells with a status of 0 will be <strong>white</strong>, while those with a status of 1 will be <strong>colored</strong>. <strong>Note</strong>: This button only affects the GUI visualisation. It is not necessary to click this button to save the curation to <code class="docutils literal notranslate"><span class="pre">track_ops.vector_curation</span></code>, this is done automatically when the status of the cell is changed by the user.</p></li>
 </ul>
 <p>Below is an example of a cell labelled as ‘not cell’ by the user (recording of developing mouse barrel cortex for consecutive 7 days)</p>

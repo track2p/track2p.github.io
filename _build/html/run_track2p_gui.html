@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -409,13 +409,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suite2p-dataset-organization">Suite2p dataset organization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-track2p">Run track2p</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paths">Paths</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#options">Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gui-inputs-and-parameters">GUI inputs and parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-paths">Data paths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rois-suite2p-specific">Selecting ROIs (suite2p specific)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-to-use-for-registration-suite2p-specific">Channel to use for registration (suite2p specific)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformation-to-use-for-registration">Transformation to use for registration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thresholding-method-for-iou-histogram">Thresholding method for IoU histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-outputs-in-suite2p-format">Save outputs in suite2p format</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO:</a></li>
 </ul>
             </nav>
         </div>
@@ -430,38 +432,40 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="run-track2p-through-the-gui">
 <h1>Run track2p through the GUI<a class="headerlink" href="#run-track2p-through-the-gui" title="Link to this heading">#</a></h1>
 <p>After activating the GUI through <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">track2p</span></code> the user should navigate to the ‘Run’ tab on the top left of the window and select ‘Run track2p algorithm’ from the dropdown menu.</p>
-<p>This will open a pop-up window that will allow the user to set the paths to suite2p datasets and to set the algorithm parameters. After configuring these settings, the user can click ‘Run’ to run the track2p algorithm, and the progress will be displayed in the terminal.</p>
+<p>This will open a pop-up window that will allow the user to set the paths to consecutively recorded datasets and to set the algorithm parameters (see screenshot below). After configuring these settings, the user can click ‘Run’ to run the track2p algorithm, and the progress will be displayed in the terminal.</p>
 <p>Once the algorithm finishes a subsequent pop-up window will prompt the user to decide whether they wish to visualize the results within the interface.</p>
-<section id="suite2p-dataset-organization">
-<h2>Suite2p dataset organization<a class="headerlink" href="#suite2p-dataset-organization" title="Link to this heading">#</a></h2>
-<p>_ <em>Warning: to avoid issues with loading data, avoid modifying the paths where the suite2p datasets are stored after running track2p. This is because the interface uses the paths to the suite2p datasets saved in <code class="docutils literal notranslate"><span class="pre">track_ops.npy</span></code> (<code class="docutils literal notranslate"><span class="pre">track_ops.all_ds_path</span></code>)</em> _</p>
-<p>We assume each of the recordings that are to be matched contains processed data in the default ‘suite2p format’. In that case each recording folder has a subfolder named ‘suite2p’, which in terms contains one sub-folder per plane. Each of these subfolders contains the usual suite2p outputs for the neurons recorded within that plane (see: <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/outputs.html">https://suite2p.readthedocs.io/en/latest/outputs.html</a>). In the case of running suite2p individually for simultaneously recorded planes, the user can reconstruct this convention by putting the results of the second suite2p run to a manually added ‘plane1’ subfolder etc.</p>
-<p>Below is an example of file organisation for a mouse imaged over 7 days (single plane).</p>
-<p><img alt="ex_suite2p_dt.png" src="_images/ex_suite2p_dt.png" /></p>
-</section>
-<section id="run-track2p">
-<h2>Run track2p<a class="headerlink" href="#run-track2p" title="Link to this heading">#</a></h2>
-<p>The algorithm launch window is shown below, providing instructions next to each parameter to be entered by the user:</p>
 <p><img alt="ex_t2p_window.png" src="_images/ex_t2p_window.png" /></p>
-<section id="paths">
-<h3>Paths<a class="headerlink" href="#paths" title="Link to this heading">#</a></h3>
+<section id="gui-inputs-and-parameters">
+<h2>GUI inputs and parameters<a class="headerlink" href="#gui-inputs-and-parameters" title="Link to this heading">#</a></h2>
+<p>This section explains the parameters available in the GUI in a bit more detail. For more information see <a class="reference external" href="https://track2p.github.io/run_inputs_and_parameters.html">Run track2p &gt; Inputs and parameters</a>.</p>
+<section id="data-paths">
+<h3>Data paths<a class="headerlink" href="#data-paths" title="Link to this heading">#</a></h3>
 <p>This is where the user selects the suite2p directories that are to be processed by the algorithm. We recommend that all the recordings that are to be matched reside wihtin the same parent directory, however this is not strictly necessary. For example above <code class="docutils literal notranslate"><span class="pre">2023-04-05_a</span></code>, <code class="docutils literal notranslate"><span class="pre">2023-04-06_a</span></code> … all reside in a folder specific for that mouse. When clicking on ‘import’ the user can then navigate to that parent directory and select subfolders (datasets such as <code class="docutils literal notranslate"><span class="pre">2023-04-05_a</span></code>) individually to move them to the right hand column using the arrows underneath the list.</p>
-<p><strong>Note:</strong> when selecting suite2p datasets the order in which they are passed to the right side column matters, since the recordings will be matched in this order. We recommend the most straightforward way of selecting the datasets in chronological order. In this way, the first day of recording will correspond to day 1 in the interface.</p>
+<p><strong>Note:</strong> when selecting suite2p datasets the order in which they are passed to the right side column matters, since the recordings will be matched in this order. We recommend the most straightforward way of selecting the datasets in chronological (or reverse chronological) order.</p>
 </section>
-<section id="options">
-<h3>Options<a class="headerlink" href="#options" title="Link to this heading">#</a></h3>
+<section id="selecting-rois-suite2p-specific">
+<h3>Selecting ROIs (suite2p specific)<a class="headerlink" href="#selecting-rois-suite2p-specific" title="Link to this heading">#</a></h3>
 <p>You can choose between <code class="docutils literal notranslate"><span class="pre">manually</span> <span class="pre">curated</span></code> and <code class="docutils literal notranslate"><span class="pre">iscell</span> <span class="pre">threshold</span></code>. Choosing ‘manually curated’ means that manual adjustments made by the user in the Suite2p interface will be taken into account. As a reminder, Suite2p detects regions of interest (ROIs) in an automated manner. After this detection, users can annotate each ROI by manually classifying them as “cell” or “not cell”. By selecting the ‘manually curated’ option, the algorithm will only test ROIs classified as “cell” for matching with other days of recordings. On the other hand, when selecting ‘iscell_thr’, the manual curation is ignored (if it exists) and instead the suite2p’s classifier values are considered (see: <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/gui.html#classifying-cells">https://suite2p.readthedocs.io/en/latest/gui.html#classifying-cells</a>). Only ROIs to which the Suite2p classifier assigns a value above this threshold will be considered for tracking by the algorithm.</p>
-<p><strong>Note1:</strong> Despite the manual curation on idividual recordings it is still important for the user to manually inspect the matches, since curation on individual datasets does not necessarily imply a good quality of registration across days.</p>
-<p><strong>Note2:</strong> Depending on the application it can be better to run the matching without manual suite2p curation and using a slightly reduced <code class="docutils literal notranslate"><span class="pre">iscell_thr</span></code>, for example 0.25. This ensures more matches and ensures successful tracking even if a cell has a value slightly below threshold on one of the days for example. In this case all the manual curation can be done within the track2p GUI.</p>
-<p>Another option that we offer to the user is to tick the option <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">the</span> <span class="pre">outputs</span> <span class="pre">in</span> <span class="pre">suite2p</span> <span class="pre">format</span> <span class="pre">(containing</span> <span class="pre">cells</span> <span class="pre">tracked</span> <span class="pre">on</span> <span class="pre">all</span> <span class="pre">days)</span></code>. In this case, the gui will save a version of the Suite2p datasets (stat.npy, iscell.npy, F.npy..) containing only the cells tracked on all days. Additionally, the data saved in the ‘matched suite2p’ format is re-ordered in a way that the cell index 0 on the first day will correspond to cell index 0 on the second day etc. The user can then use this data as they would normally with the suite2p gui, for example by dragging and dropping stats.npy files for different days. The cells in this case will have the same color on different days, and examine for example ROI 0 for each day, the user can see that it corresponds to the same cell for all different days. The data saved in the ‘matched suite2p’ format will be located in a  <code class="docutils literal notranslate"><span class="pre">matched_suite2p</span></code> folder inside the track2p folder, and will be organised in the same way as the original data (in default suite2p format, for more information see above).</p>
+<p><strong>Note1:</strong> Despite the manual curation on individual recordings it is still important for the user to manually inspect the matches, since curation on individual datasets does not necessarily imply a good quality of tracking across days.</p>
+<p><strong>Note2:</strong> This option is only available when using the <code class="docutils literal notranslate"><span class="pre">suite2p</span></code> format, when using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> we assume the selection is done beforehand, namely that the ROIs included in the data are already the ones considered as cells.</p>
 </section>
+<section id="channel-to-use-for-registration-suite2p-specific">
+<h3>Channel to use for registration (suite2p specific)<a class="headerlink" href="#channel-to-use-for-registration-suite2p-specific" title="Link to this heading">#</a></h3>
+<p>This will choose which channel from the suite2p output data will be used for registration (for more info see the paper). This option is only available if the original recording is a 2-channel (for suite2p: <code class="docutils literal notranslate"><span class="pre">ops.nchannels=2</span></code>) one and it is preprocessed so that the second channel is also included in the Suite2p outputs (for suite2p: <code class="docutils literal notranslate"><span class="pre">ops[&quot;meanImg_chan2&quot;]</span></code> exists).</p>
+<p><strong>Note:</strong> This option is only available when using the <code class="docutils literal notranslate"><span class="pre">suite2p</span></code> format, when using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> we assume that the image saved in the folder by the user is the one that is optimal to do the alignment. Importantly in this case this image should also be aligned with the ROIs (this is done automatically in the case of suite2p outputs)</p>
 </section>
-<section id="todo">
-<h2>TODO:<a class="headerlink" href="#todo" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Add figure of mathed ROIs: … <em>Below, a figure illustrates an example of the original ‘suite2p’ datasets for 7 days of recording a mouse (first row), as well as the ‘suite2p’ datasets generated by track2p (second row), containing only the cells present every day.</em></p></li>
-<li><p>Add screenshot of two suite2p GUIs side by side as an illustration of ‘matched suite2p’</p></li>
-</ul>
+<section id="transformation-to-use-for-registration">
+<h3>Transformation to use for registration<a class="headerlink" href="#transformation-to-use-for-registration" title="Link to this heading">#</a></h3>
+<p>This will choose which type of transform to use. The user can choose either <code class="docutils literal notranslate"><span class="pre">rigid</span></code> which can account for translations and rotations, <code class="docutils literal notranslate"><span class="pre">affine</span></code> additionally allows for scaling and shearing. Affine should be used especially when applying to data in development, but might even work better in general.</p>
+</section>
+<section id="thresholding-method-for-iou-histogram">
+<h3>Thresholding method for IoU histogram<a class="headerlink" href="#thresholding-method-for-iou-histogram" title="Link to this heading">#</a></h3>
+<p>The method to determine which threshold to use when filtering out putative false positive matches across a pair of days. <code class="docutils literal notranslate"><span class="pre">otsu</span></code> uses the Otsu method and <code class="docutils literal notranslate"><span class="pre">min</span></code> sets the threshold based on the local minimum of an estimated probability density function. Both work on the distribution of IoU’s for initial paired matches across two recordings. From our experience <code class="docutils literal notranslate"><span class="pre">otsu</span></code> is slightly more conservative compared to <code class="docutils literal notranslate"><span class="pre">min</span></code>, but that might depend on the particular dataset / preparation.</p>
+</section>
+<section id="save-outputs-in-suite2p-format">
+<h3>Save outputs in suite2p format<a class="headerlink" href="#save-outputs-in-suite2p-format" title="Link to this heading">#</a></h3>
+<p>Another option that we offer to the user is to tick the option <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">the</span> <span class="pre">outputs</span> <span class="pre">in</span> <span class="pre">suite2p</span> <span class="pre">format</span> <span class="pre">(containing</span> <span class="pre">cells</span> <span class="pre">tracked</span> <span class="pre">on</span> <span class="pre">all</span> <span class="pre">days)</span></code>. In this case, the gui will save a version of the Suite2p datasets (stat.npy, iscell.npy, F.npy..) containing only the cells tracked on all days. Additionally, the data saved in the ‘matched suite2p’ format is re-ordered in a way that the cell index 0 on the first day will correspond to cell index 0 on the second day etc. The user can then use this data as they would normally with the suite2p gui, for example by dragging and dropping <code class="docutils literal notranslate"><span class="pre">stat.npy</span></code> files for different days. The cells in this case will have the same color on different days, and examine for example ROI 0 for each day, the user can see that it corresponds to the same cell for all different days. The data saved in the ‘matched suite2p’ format will be located in a  <code class="docutils literal notranslate"><span class="pre">matched_suite2p</span></code> folder inside the track2p folder, and will be organised in the same way as the original data (in default suite2p format, for more information see above).</p>
+</section>
 </section>
 </section>
 
@@ -529,13 +533,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suite2p-dataset-organization">Suite2p dataset organization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-track2p">Run track2p</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paths">Paths</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#options">Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gui-inputs-and-parameters">GUI inputs and parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-paths">Data paths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rois-suite2p-specific">Selecting ROIs (suite2p specific)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-to-use-for-registration-suite2p-specific">Channel to use for registration (suite2p specific)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformation-to-use-for-registration">Transformation to use for registration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thresholding-method-for-iou-histogram">Thresholding method for IoU histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-outputs-in-suite2p-format">Save outputs in suite2p format</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO:</a></li>
 </ul>
   </nav></div>
 

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -413,11 +413,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matches">
 <h1>Matches<a class="headerlink" href="#matches" title="Link to this heading">#</a></h1>
-<p>There are two types of output from track2p:</p>
+<p>In the original version of track2p there are two types of output:</p>
 <ul class="simple">
 <li><p>A matrix (<code class="docutils literal notranslate"><span class="pre">plane#_match_mat.npy</span></code>) containing the indices of matched neurons across the session for a given plane (<code class="docutils literal notranslate"><span class="pre">#</span></code> is the index of the plane). Since matching is done from first day to last, some neurons will not be sucessfully tracked after one or a few days. In this case the matrix contains <code class="docutils literal notranslate"><span class="pre">None</span></code> values. To get neurons tracked across all days only take the rows of the matrices containing no <code class="docutils literal notranslate"><span class="pre">None</span></code> values.</p></li>
 <li><p>A <code class="docutils literal notranslate"><span class="pre">track_ops.npy</span></code> object that contains the parameters used for the algorithm and some intermediate results that can be used for visualisations (e. g. registered images and ROIs etc.)</p></li>
 </ul>
+<p>Since the original <code class="docutils literal notranslate"><span class="pre">plane#_match_mat.npy</span></code> depends on the method used for filtering cells (e. g. ROIs are re-indexed depending on if the user chooses manual curation or different versions of iscell_threshold), we decided to add outputs that are agnostic to this (e. g. using the default suite2p indices before filtering depending on <code class="docutils literal notranslate"><span class="pre">iscell.npy</span></code>). Using this makes it much easier to load data. This output is saved as <code class="docutils literal notranslate"><span class="pre">plane#_suite2p_indices.npy</span></code> (and the equivalents in <code class="docutils literal notranslate"><span class="pre">.mat</span></code> and <code class="docutils literal notranslate"><span class="pre">.csv</span></code> formats).</p>
 </section>
 
     <script type="text/x-thebe-config">

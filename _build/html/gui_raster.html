@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -413,15 +413,14 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="generating-raster-plots">
 <h1>Generating raster plots<a class="headerlink" href="#generating-raster-plots" title="Link to this heading">#</a></h1>
 <p>To generate raster plots, the user should launch the GUI through <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">track2p</span></code> and navigate to the ‘Visualization’ tab on the top of the window and select ‘Generate raster plot’ from the dropdown menu. This will open a pop-up window that will allow the user to set the path to track2p output folder and to set several parameters.</p>
-<p>IMAGE</p>
+<p><img alt="ex_raster.png" src="_images/ex_raster.png" /></p>
 <p>The user can use <code class="docutils literal notranslate"><span class="pre">PCA</span></code>(Principal Component Analysis) and <code class="docutils literal notranslate"><span class="pre">t-SNE</span></code> (t-distributed Stochastic Neighbor Embedding) techniques to re-sort the rasters based on dimensionality reduction. This allows for more intuitive visualisations that can reveal structure within the neuronal activity traces. Additionally, this sorting can be applied for a specific day and applied to all other days. This makes it possible to analyze variations in cell activity from day to day by perserving the sorting of the matched cells.</p>
 <p>The user can also enter advanced settings:</p>
 <ul class="simple">
-<li><p>Averaging bin size : to smooth the plot raster data over a defined time interval. (Note: currently, the total number of frames of the recurding should be divisible with the entered number)</p></li>
-<li><p>vmin and vmax parameters allow to adjust the contrast</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Averaging</span> <span class="pre">bin</span> <span class="pre">size</span></code> : to smooth the plot raster data over a defined time interval. (Note: total number of frames of the recurding should be divisible with the entered number)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code> parameters allow to adjust the contrast</p></li>
 </ul>
-<p>Below is an example of a raster plot generated using tsne for sorting, the sorting was computed on last day and each 10 time frames were averaged to smooth the data (recording of developing mouse barrel cortex for consecutive 7 days).</p>
-<p><img alt="ex_raster.png" src="_images/ex_raster.png" /></p>
+<p>The picture above also shows an example of a raster plot generated using tsne for sorting, the sorting was computed on last day and each 10 time frames were averaged to smooth the data (recording of developing mouse barrel cortex for consecutive 7 days).</p>
 </section>
 
     <script type="text/x-thebe-config">
